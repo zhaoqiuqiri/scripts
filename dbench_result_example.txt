@@ -1,0 +1,64 @@
+All use nvme disks, volume size = 1TiB
+
+Test: openebs mayastor iscsi volume (replica = 1)
+==================
+= Dbench Summary =
+==================
+Random Read/Write IOPS: 54.9k/54.6k. BW: 768MiB/s / 1335MiB/s
+Average Latency (usec) Read/Write: 178.70/119.46
+Sequential Read/Write: 1042MiB/s / 1501MiB/s
+Mixed Random Read/Write IOPS: 38.5k/12.8k
+
+Test: openebs localpv device (replica = 1)
+==================
+= Dbench Summary =
+==================
+Random Read/Write IOPS: 233k/226k. BW: 3257MiB/s / 2056MiB/s
+Average Latency (usec) Read/Write: 203.22/26.72
+Sequential Read/Write: 3257MiB/s / 2021MiB/s
+Mixed Random Read/Write IOPS: 181k/60.6k
+
+Test: openebs cstor volume (replica = 3)
+==================
+= Dbench Summary =
+==================
+Random Read/Write IOPS: 2084/2339. BW: 62.7MiB/s / 28.5MiB/s
+Average Latency (usec) Read/Write: 1509.13/2831.29
+Sequential Read/Write: 15.8MiB/s / 30.7MiB/s
+Mixed Random Read/Write IOPS: 2867/956
+
+Test: neonsan csi volume (replica = 1)
+==================
+= Dbench Summary =
+==================
+Random Read/Write IOPS: 39.5k/57.7k. BW: 1061MiB/s / 1031MiB/s
+Average Latency (usec) Read/Write: 397.96/291.75
+Sequential Read/Write: 1047MiB/s / 1039MiB/s
+Mixed Random Read/Write IOPS: 38.7k/12.9k
+
+Test: neonsan csi volume (replica = 3)
+==================
+= Dbench Summary =
+==================
+Random Read/Write IOPS: 39.3k/31.4k. BW: 1208MiB/s / 508MiB/s
+Average Latency (usec) Read/Write: 409.63/423.74
+Sequential Read/Write: 1316MiB/s / 483MiB/s
+Mixed Random Read/Write IOPS: 29.8k/9889
+
+Test: neonsan rdma csi volume (replica = 1)
+==================
+= Dbench Summary =
+==================
+Random Read/Write IOPS: 167k/121k. BW: 1004MiB/s / 1057MiB/s
+Average Latency (usec) Read/Write: 275.57/194.45
+Sequential Read/Write: 1029MiB/s / 978MiB/s
+Mixed Random Read/Write IOPS: 126k/42.2k
+
+Test: neonsan rdma csi volume (replica = 3)
+==================
+= Dbench Summary =
+==================
+Random Read/Write IOPS: 180k/75.7k. BW: 1094MiB/s / 546MiB/s
+Average Latency (usec) Read/Write: 242.85/346.59
+Sequential Read/Write: 1099MiB/s / 551MiB/s
+Mixed Random Read/Write IOPS: 101k/33.8k
