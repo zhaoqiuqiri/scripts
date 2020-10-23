@@ -1,7 +1,19 @@
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: longhorn-pvc
+spec:
+  storageClassName: longhorn
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1000Gi
+---
 apiVersion: v1
 kind: Pod
 metadata:
-  name: busybox
+  name: busybox-longhorn
 spec:
   containers:
     - name: busybox
@@ -13,5 +25,5 @@ spec:
   volumes:
   - name: volume1
     persistentVolumeClaim:
-      claimName: openebs-pvc
+      claimName: longhorn-pvc
   restartPolicy: Never
