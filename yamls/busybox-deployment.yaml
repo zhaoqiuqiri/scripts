@@ -1,0 +1,37 @@
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: busybox-pvc
+spec:
+  storageClassName: openebs-hostpath
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: busybox
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: busybox
+  template:
+    metadata:
+      labels:
+        app: busybox
+    spec:
+      containers:
+        - name: busybox
+          image: busybox
+          command: [ "/bin/sh", "-c", "tail -f /dev/null" ]
+          volumeMounts:
+          - name: volume1
+            mountPath: "/mnt/volume1"
+      volumes:
+      - name: volume1
+        persistentVolumeClaim:
+          claimName: busybox-pvc

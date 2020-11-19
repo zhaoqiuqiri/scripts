@@ -62,3 +62,40 @@ Random Read/Write IOPS: 180k/75.7k. BW: 1094MiB/s / 546MiB/s
 Average Latency (usec) Read/Write: 242.85/346.59
 Sequential Read/Write: 1099MiB/s / 551MiB/s
 Mixed Random Read/Write IOPS: 101k/33.8k
+
+Test: longhorn iscsi volume (replica = 3)
+==================
+= Dbench Summary =
+==================
+Random Read/Write IOPS: 15.7k/10.7k. BW: 540MiB/s / 304MiB/s
+Average Latency (usec) Read/Write: 758.51/858.44
+Sequential Read/Write: 778MiB/s / 280MiB/s
+Mixed Random Read/Write IOPS: 12.3k/4085
+
+Test: longhorn iscsi volume (replica = 1)
+==================
+= Dbench Summary =
+==================
+Random Read/Write IOPS: 12.2k/12.7k. BW: 440MiB/s / 322MiB/s
+Average Latency (usec) Read/Write: 888.80/800.83
+Sequential Read/Write: 494MiB/s / 345MiB/s
+Mixed Random Read/Write IOPS: 8823/2942
+
+Test: rook ceph block csi rbd (replica = 1)
+==================
+= Dbench Summary =
+==================
+Random Read/Write IOPS: 29.3k/19.2k. BW: 1487MiB/s / 417MiB/s
+Average Latency (usec) Read/Write: 474.21/801.76
+Sequential Read/Write: 1500MiB/s / 1230MiB/s
+Mixed Random Read/Write IOPS: 19.3k/6349
+
+Test: rook ceph block csi rbd (replica = 3)
+==================
+= Dbench Summary =
+==================
+Random Read/Write IOPS: 29.4k/14.1k. BW: 1833MiB/s / 420MiB/s
+Average Latency (usec) Read/Write: 473.41/1588.95
+Sequential Read/Write: 2011MiB/s / 733MiB/s
+Mixed Random Read/Write IOPS: 17.2k/5743
+
