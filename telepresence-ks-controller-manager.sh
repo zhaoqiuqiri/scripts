@@ -1,0 +1,1 @@
+/usr/local/bin/telepresence --swap-deployment ks-controller-manager --expose 8080 --expose 443 --namespace kubesphere-system

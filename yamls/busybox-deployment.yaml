@@ -1,32 +1,32 @@
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: busybox-pvc
+  name: busybox-test
 spec:
-  storageClassName: openebs-hostpath
+  storageClassName: rook-ceph-block
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 1Gi
+      storage: 10Gi
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: busybox
+  name: busybox-test
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: busybox
+      app: busybox-test
   template:
     metadata:
       labels:
-        app: busybox
+        app: busybox-test
     spec:
       containers:
         - name: busybox
-          image: busybox
+          image: busybox:1.29
           command: [ "/bin/sh", "-c", "tail -f /dev/null" ]
           volumeMounts:
           - name: volume1
@@ -34,4 +34,4 @@ spec:
       volumes:
       - name: volume1
         persistentVolumeClaim:
-          claimName: busybox-pvc
+          claimName: busybox-test
