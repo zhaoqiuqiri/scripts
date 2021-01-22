@@ -8,6 +8,7 @@ target="$HOME/Documents/private/"
 cd "$target"
 
 cp -f /etc/hosts "$target/etc-hosts"
+cp -f ~/.bash_profile "$target/bash_profile"
 
 if [[ $(git status --porcelain=v1 2>/dev/null | wc -l) -eq 0 ]]
 then
