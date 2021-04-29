@@ -63,6 +63,28 @@ Average Latency (usec) Read/Write: 242.85/346.59
 Sequential Read/Write: 1099MiB/s / 551MiB/s
 Mixed Random Read/Write IOPS: 101k/33.8k
 
+Test: neonio csi volume (replica = 1)
+==================
+= Dbench Summary =
+==================
+Random Read/Write IOPS: 32.9k/30.2k. BW: 1116MiB/s / 1199MiB/s
+Average Latency (usec) Read/Write: 420.52/276.68
+Sequential Read/Write: 1100MiB/s / 1050MiB/s
+Mixed Random Read/Write IOPS: 24.8k/8320
+
+Test: neonio csi volume (replica = 3)
+==================
+= Dbench Summary =
+==================
+Random Read/Write IOPS: 17.1k/10.9k. BW: 777MiB/s / 463MiB/s
+Average Latency (usec) Read/Write: 522.17/1436.50
+Sequential Read/Write: 777MiB/s / 471MiB/s
+Mixed Random Read/Write IOPS: 12.4k/4087
+
+neonio rdma csi volume (replica = 1)
+
+neonio rdma csi volume (replica = 3)
+
 Test: longhorn iscsi volume (replica = 3)
 ==================
 = Dbench Summary =
