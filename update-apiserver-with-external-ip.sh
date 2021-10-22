@@ -29,6 +29,13 @@ openssl req -new -key apiserver.key -subj "/CN=kube-apiserver," -out apiserver.c
 echo "subjectAltName = $(openssl x509 -noout -text -in apiserver.crt | grep -A1 "Subject Alternative Name" | grep -v "Subject Alternative Name" | sed 's/ Address//g' | awk '{$1=$1;print}'), IP:$ip" > apiserver.ext
 openssl x509 -req -in apiserver.csr -CA ca.crt -CAkey ca.key -CAcreateserial -out apiserver.crt -days 365 -extfile apiserver.ext
 
+echo "Generate succeeded"
+echo "Make sure to run this script on all masters"
+
+echo "Do you want to restart all kube-apiserver pods? [yes/no]"
+read -r ans
+[[ $ans != "yes" ]] && exit 1
+
 echo "Restart kube-apiserver ..."
 for apiserver in $(kubectl -n kube-system get pod | awk '{print $1}' | grep "^kube-apiserver")
 do
