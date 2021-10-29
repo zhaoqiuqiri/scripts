@@ -25,7 +25,7 @@ cp -f apiserver.crt apiserver.key "$tmpdir"
 
 echo "Generating new apiserver.crt and apiserver.key ..."
 openssl genrsa -out apiserver.key 4096
-openssl req -new -key apiserver.key -subj "/CN=kube-apiserver," -out apiserver.csr
+openssl req -new -key apiserver.key -subj "/CN=kube-apiserver" -out apiserver.csr
 # generate .ext file, refer to https://www.openssl.org/docs/man1.0.2/man5/x509v3_config.html
 {
   echo "keyUsage=critical,digitalSignature,keyEncipherment"
