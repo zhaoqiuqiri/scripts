@@ -16,7 +16,8 @@ done
 
 ip=$1
 
-[[ $(openssl x509 -in apiserver.crt -noout -ext "subjectAltName" | grep -c "Address:$ip") -gt 0 ]] && echo "External IP $ip already exists in apiserver.crt" && exit 0
+# for openssl backward compatibility, do not use the openssl -ext argument
+[[ $(openssl x509 -in apiserver.crt -noout -text | grep -A1 "Subject Alternative Name" | grep -v "Subject Alternative Name" | grep -c "Address:$ip") -gt 0 ]] && echo "External IP $ip already exists in apiserver.crt" && exit 0
 
 tmpdir=/tmp/_apiserver
 mkdir -p "$tmpdir"
@@ -32,7 +33,7 @@ openssl req -new -key apiserver.key -subj "/CN=kube-apiserver" -out apiserver.cs
   echo "extendedKeyUsage=serverAuth"
   echo "basicConstraints=critical,CA:FALSE"
   echo "authorityKeyIdentifier=keyid"
-  echo "subjectAltName=$(openssl x509 -in apiserver.crt -noout -ext "subjectAltName" | grep -v "Subject Alternative Name" | sed 's/ Address//g' | sed 's/, /,/g' | sed 's/,IP:<invalid>//g' | awk '{$1=$1;print}'),IP:$ip"
+  echo "subjectAltName=$(openssl x509 -in apiserver.crt -noout -text | grep -A1 "Subject Alternative Name" | grep -v "Subject Alternative Name" | sed 's/ Address//g' | sed 's/, /,/g' | sed 's/,IP:<invalid>//g' | awk '{$1=$1;print}'),IP:$ip"
 } > apiserver.ext
 openssl x509 -req -in apiserver.csr -CA ca.crt -CAkey ca.key -CAcreateserial -out apiserver.crt -days 365 -extfile apiserver.ext
 
