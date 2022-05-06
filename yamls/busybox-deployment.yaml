@@ -27,6 +27,7 @@ spec:
       containers:
         - name: busybox
           image: busybox:1.29
+          imagePullPolicy: IfNotPresent
           command: [ "/bin/sh", "-c", "tail -f /dev/null" ]
           volumeMounts:
           - name: volume1
